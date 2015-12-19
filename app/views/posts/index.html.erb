@@ -1,42 +1,43 @@
-<div class="header">
-  <div class="container">
-    <h1>Film Blog</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>快乐写影评</h1>
+    </div>
   </div>
-</div>
-
-<div class="main">
-  <div class="container">
-
-  <%= form_for(@new_post) do |f| %>
-    <div class="field">
-      <%= f.label :movie_id %><br> 
-      <%= f.text_area :filmid %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_for(@new_post) do |f| %>
+        <div class="input-group">
+          <%= f.label "电影名" %><br>
+          <%= f.text_field :filmid, class: "form-control" %>
+        </div>
+        <div class="input-group">
+          <%= f.label "影评标题" %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="input-group">
+          <%= f.label "电影评分" %><br>
+          <%= f.number_field :rating, class: "form-control", step: "0.5" %>
+        </div>
+        <div class="input-group">
+          <%= f.label "影评正文" %><br>
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+        <div class="input-group submit-button">
+      		<%= f.submit "提交影评", class: "form-control" %>
+        </div>
+      <% end %>
     </div>
-    <div class="field">
-      <%= f.label :new_post_title %><br>
-      <%= f.text_area :title %>
+    <div class="col-md-6">
+      <ul class="comments">
+        <% @all_post.each do |p| %>
+          <li class="comment">
+            <h2><%= p.title %></h2>
+            <p><%= p.comment %></p>
+            <p><%= p.rating %></p>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <div class="field">
-      <%= f.label :new_post_comment %><br>
-      <%= f.text_area :comment %>
-    </div>
-    <div class="field">
-      <%= f.label :new_post_rating %><br>
-      <%= f.text_area :rating %>
-    </div>
-    <div class="actions">
-  		<%= f.submit "Create" %>
-    </div>
-<% end %>
-
-
-<ul class="comments">
-  <% @all_post.each do |p| %>
-  <ul><h2><%= p.title %></h2></ul>
-  <ul><%= p.comment %></ul>
-  <ul><%= p.rating %></ul>
-  <% end %>
-</ul>
-
   </div>
 </div>
