@@ -1,0 +1,42 @@
+<div class="header">
+  <div class="container">
+    <h1>Film Blog</h1>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container">
+
+  <%= form_for(@new_post) do |f| %>
+    <div class="field">
+      <%= f.label :movie_id %><br> 
+      <%= f.text_area :filmid %>
+    </div>
+    <div class="field">
+      <%= f.label :new_post_title %><br>
+      <%= f.text_area :title %>
+    </div>
+    <div class="field">
+      <%= f.label :new_post_comment %><br>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="field">
+      <%= f.label :new_post_rating %><br>
+      <%= f.text_area :rating %>
+    </div>
+    <div class="actions">
+  		<%= f.submit "Create" %>
+    </div>
+<% end %>
+
+
+<ul class="comments">
+  <% @all_post.each do |p| %>
+  <ul><h2><%= p.title %></h2></ul>
+  <ul><%= p.comment %></ul>
+  <ul><%= p.rating %></ul>
+  <% end %>
+</ul>
+
+  </div>
+</div>
