@@ -1,34 +1,38 @@
-<div class="container-fluid">
+<div class="container-fluid write-container">
   <div class="row">
     <div class="col-md-12">
-      <h1>快乐写影评</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= form_for(@new_post) do |f| %>
+      <%= form_for(@new_post, :html => {:class => 'write-form'}) do |f| %>
         <div class="input-group">
-          <%= f.label "电影名" %><br>
+          <span class="input-group-addon">电影名</span>
           <%= f.text_field :filmid, class: "form-control" %>
         </div>
+        <br />
         <div class="input-group">
-          <%= f.label "影评标题" %><br>
+          <span class="input-group-addon">影评标题</span>
           <%= f.text_field :title, class: "form-control" %>
         </div>
+        <br />
         <div class="input-group">
-          <%= f.label "电影评分" %><br>
+          <span class="input-group-addon">电影评分</span>
           <%= f.number_field :rating, class: "form-control", step: "0.5" %>
         </div>
-        <div class="input-group">
+        <br />
+        <div class="input-group write-content">
           <%= f.label "影评正文" %><br>
           <%= f.text_area :comment, class: "form-control" %>
         </div>
-        <div class="input-group submit-button">
+        <br />
+        <div class="input-group">
       		<%= f.submit "提交影评", class: "form-control" %>
         </div>
       <% end %>
     </div>
-    <div class="col-md-6">
+  </div>
+</div>
+
+<div class="container-fluid comments-container">
+  <div class="row">
+    <div class="col-md-12">
       <ul class="comments">
         <% @all_post.each do |p| %>
           <li class="comment">
