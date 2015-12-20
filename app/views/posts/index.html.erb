@@ -2,9 +2,8 @@
   <div class="row">
     <div class="col-md-12">
       <%= form_for(@new_post, :html => {:class => 'write-form'}) do |f| %>
-        <div class="input-group">
-          <span class="input-group-addon">电影名</span>
-          <%= f.text_field :filmid, class: "form-control" %>
+        <%= f.hidden_field :filmid, class: "imdb-input" %>
+        <div class="movie-info">
         </div>
         <br />
         <div class="input-group">
@@ -43,5 +42,25 @@
         <% end %>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="container-fluid search-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="text" class="form-control search-text-input" placeholder="搜什么电影呢...">
+        <span class="input-group-btn">
+          <button class="btn btn-default search-button" type="button">搜电影</button>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="search-results-prompt"></p>
+    </div>
+  </div>
+  <div class="row search-results-container">
   </div>
 </div>
